@@ -5,7 +5,6 @@ import pandas as pd
 stocks = pd.read_csv("./stock-prices.csv")
 stocks["Volume"] = round(stocks["Volume"] / 1_000_000, 1)
 stocks = stocks.nlargest(5, "Volume")
-print(stocks)
 
 app = Dash()
 
@@ -47,4 +46,4 @@ app.layout = html.Div([
     dcc.Graph(figure=scatter_plot_figure),
 ])
 
-app.run(debug=True)
+app.run(debug=True, host='0.0.0.0', port=1000)
